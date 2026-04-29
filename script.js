@@ -169,6 +169,39 @@ function toggleMusic(){
     });
   }
 }
+function tryPlayAudio() {
+  // If the music isn't playing yet, try to play it!
+  if (!musicPlaying) {
+    audio.play().then(() => {
+      musicPlaying = true;
+      document.getElementById('music-status').textContent = 'Playing... ♫';
+      document.getElementById('music-bars').classList.remove('paused');
+      
+      // MAGIC HAPPENS HERE:
+      // Once the music successfully starts playing, it removes all these listeners 
+      // so the code doesn't keep trying to play the song over and over again!
+      window.removeEventListener('click', tryPlayAudio);
+      window.removeEventListener('touchstart', tryPlayAudio);
+      window.removeEventListener('keydown', tryPlayAudio);
+      window.removeEventListener('scroll', tryPlayAudio);
+      
+    }).catch(e => {
+      // If the browser blocks it, it silently waits for the next interaction
+      console.log('Autoplay waiting for interaction...');
+    });
+  }
+}
+
+// STEP 1: It tries to play instantly when the page loads
+tryPlayAudio();
+
+// STEP 2: If the browser blocked Step 1, these 4 lines sit invisibly in the background. 
+// The absolute millisecond a user clicks, taps their phone, presses a keyboard key, 
+// or scrolls down the page, it instantly runs tryPlayAudio() and starts the music!
+window.addEventListener('click', tryPlayAudio);
+window.addEventListener('touchstart', tryPlayAudio);
+window.addEventListener('keydown', tryPlayAudio);
+window.addEventListener('scroll', tryPlayAudio, {passive: true});
 
 // ── FLOATING PETALS ──
 function spawnPetal(){
