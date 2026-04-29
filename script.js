@@ -160,76 +160,14 @@ function toggleMusic(){
     document.getElementById('music-status').textContent='Click to play ♪';
     document.getElementById('music-bars').classList.add('paused');
   } else {
-    // Use Web Audio API to generate romantic piano melody
-    playRomanticTone();
-    musicPlaying=true;
-    document.getElementById('music-status').textContent='Playing... ♫';
-    document.getElementById('music-bars').classList.remove('paused');
+    audio.play().then(() => {
+      musicPlaying=true;
+      document.getElementById('music-status').textContent='Playing... ♫';
+      document.getElementById('music-bars').classList.remove('paused');
+    }).catch(err => {
+      console.log('Audio playback failed', err);
+    });
   }
-}
-
-// Web Audio API - generates a gentle romantic melody
-let audioCtx=null;
-let melodyInterval=null;
-const NOTES={C4:261.6,D4:293.7,E4:329.6,F4:349.2,G4:392,A4:440,B4:493.9,C5:523.3,D5:587.3,E5:659.3,F5:698.5,G5:784,A5:880};
-// Canon in D inspired melody pattern
-const MELODY=[
-  [NOTES.A4,.5],[NOTES.G4,.5],[NOTES.F4,.5],[NOTES.E4,.5],
-  [NOTES.D4,.5],[NOTES.C4,.5],[NOTES.D4,.5],[NOTES.E4,.5],
-  [NOTES.F4,.5],[NOTES.E4,.5],[NOTES.D4,.5],[NOTES.C4,.5],
-  [NOTES.D4,.75],[NOTES.E4,.25],[NOTES.F4,.5],[NOTES.G4,.5],
-  [NOTES.A4,.5],[NOTES.G4,.5],[NOTES.A4,.5],[NOTES.B4,.5],
-  [NOTES.C5,.5],[NOTES.B4,.5],[NOTES.A4,.5],[NOTES.G4,.5],
-  [NOTES.F4,.5],[NOTES.E4,.5],[NOTES.F4,.5],[NOTES.G4,.5],
-  [NOTES.A4,1],[NOTES.A4,.5],[NOTES.G4,.5]
-];
-const BASS=[
-  [NOTES.D4,2],[NOTES.A4,2],[NOTES.B4,2],[NOTES.F4,2],
-  [NOTES.G4,2],[NOTES.D4,2],[NOTES.G4,2],[NOTES.A4,2]
-];
-let melodyIdx=0;
-let bassIdx=0;
-let nextNoteTime=0;
-
-function playRomanticTone(){
-  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  nextNoteTime=audioCtx.currentTime+0.1;
-  scheduleMelody();
-}
-
-function scheduleMelody(){
-  if(!musicPlaying) return;
-  const TEMPO=0.45; // seconds per beat
-  while(nextNoteTime < audioCtx.currentTime + 0.5){
-    const [freq,dur]=MELODY[melodyIdx % MELODY.length];
-    playNote(freq,nextNoteTime,dur*TEMPO*0.85,'sine',0.12);
-    const [bfreq,bdur]=BASS[bassIdx % BASS.length];
-    playNote(bfreq*0.5,nextNoteTime,bdur*TEMPO*0.6,'triangle',0.05);
-    nextNoteTime+=dur*TEMPO;
-    melodyIdx++;
-    if(melodyIdx % (MELODY.length/4|0) === 0) bassIdx++;
-  }
-  if(musicPlaying) requestAnimationFrame(scheduleMelody);
-}
-
-function playNote(freq,startTime,duration,type,gain){
-  const osc=audioCtx.createOscillator();
-  const gainNode=audioCtx.createGain();
-  const reverb=audioCtx.createConvolver ? audioCtx.createGain() : gainNode;
-  osc.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-  osc.type=type;
-  osc.frequency.setValueAtTime(freq,startTime);
-  gainNode.gain.setValueAtTime(0,startTime);
-  gainNode.gain.linearRampToValueAtTime(gain,startTime+0.05);
-  gainNode.gain.exponentialRampToValueAtTime(0.001,startTime+duration);
-  osc.start(startTime);
-  osc.stop(startTime+duration+0.1);
-}
-
-function stopMusic(){
-  musicPlaying=false;
-  if(audioCtx){audioCtx.close();audioCtx=null;}
 }
 
 // ── FLOATING PETALS ──
