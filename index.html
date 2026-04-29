@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="view-invitation">
+
+
+<!-- Decorative corners -->
+<div class="corner corner-tl"><svg viewBox="0 0 80 80" fill="none"><path d="M4 4L4 76" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4L76 4" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4Q32 4 32 32" stroke="#c9922a" stroke-width=".8" fill="none"/><circle cx="4" cy="4" r="3" fill="#7b1a2e"/><circle cx="42" cy="4" r="1.5" fill="#c9922a" opacity=".5"/><circle cx="4" cy="42" r="1.5" fill="#c9922a" opacity=".5"/></svg></div>
+<div class="corner corner-tr"><svg viewBox="0 0 80 80" fill="none"><path d="M4 4L4 76" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4L76 4" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4Q32 4 32 32" stroke="#c9922a" stroke-width=".8" fill="none"/><circle cx="4" cy="4" r="3" fill="#7b1a2e"/><circle cx="42" cy="4" r="1.5" fill="#c9922a" opacity=".5"/><circle cx="4" cy="42" r="1.5" fill="#c9922a" opacity=".5"/></svg></div>
+<div class="corner corner-bl"><svg viewBox="0 0 80 80" fill="none"><path d="M4 4L4 76" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4L76 4" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4Q32 4 32 32" stroke="#c9922a" stroke-width=".8" fill="none"/><circle cx="4" cy="4" r="3" fill="#7b1a2e"/><circle cx="42" cy="4" r="1.5" fill="#c9922a" opacity=".5"/><circle cx="4" cy="42" r="1.5" fill="#c9922a" opacity=".5"/></svg></div>
+<div class="corner corner-br"><svg viewBox="0 0 80 80" fill="none"><path d="M4 4L4 76" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4L76 4" stroke="#7b1a2e" stroke-width="1"/><path d="M4 4Q32 4 32 32" stroke="#c9922a" stroke-width=".8" fill="none"/><circle cx="4" cy="4" r="3" fill="#7b1a2e"/><circle cx="42" cy="4" r="1.5" fill="#c9922a" opacity=".5"/><circle cx="4" cy="42" r="1.5" fill="#c9922a" opacity=".5"/></svg></div>
+
+<!-- 🎵 MUSIC PLAYER -->
+<div id="music-player" onclick="toggleMusic()" title="Toggle romantic music">
+  <div class="note">🎵</div>
+  <div>
+    <div class="music-label">Romantic Music</div>
+    <div class="music-status" id="music-status">Click to play ♪</div>
+  </div>
+  <div class="music-bars paused" id="music-bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</div>
+<audio id="bg-music" loop>
+  <!-- Canon in D - Public Domain -->
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"/>
+</audio>
+
+<!-- Floating petals -->
+<div id="petals-container"></div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-inner">
+    <p class="announce" id="pub-announce">Together with their families</p>
+
+    <div class="ornament-row">
+      <div class="line"></div>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="#c9922a" opacity=".6"><path d="M10 1L12.2 7.2H18.8L13.5 11L15.7 17.2L10 13.4L4.3 17.2L6.5 11L1.2 7.2H7.8Z"/></svg>
+      <div class="line rev"></div>
+    </div>
+
+    <h1 class="couple-names">
+      <em id="pub-name1">Vishwa</em>
+      <span class="amp">&amp;</span>
+      <em id="pub-name2">Geethma</em>
+    </h1>
+
+    <div class="ornament-row" style="margin-top:1rem">
+      <div class="line"></div>
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="#7b1a2e" opacity=".5"><path d="M10 2 Q13 6 18 6 Q14 9 16 14 Q12 11 10 14 Q8 11 4 14 Q6 9 2 6 Q7 6 10 2Z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="#c9922a" opacity=".7"><path d="M10 1L12.2 7.2H18.8L13.5 11L15.7 17.2L10 13.4L4.3 17.2L6.5 11L1.2 7.2H7.8Z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="#7b1a2e" opacity=".5"><path d="M10 2 Q13 6 18 6 Q14 9 16 14 Q12 11 10 14 Q8 11 4 14 Q6 9 2 6 Q7 6 10 2Z"/></svg>
+      <div class="line rev"></div>
+    </div>
+
+    <p class="tagline" id="pub-tagline">Request the honour of your presence<br>at their wedding celebration</p>
+
+    <div class="countdown" id="countdown">
+      <div class="cd-box"><span class="cd-num" id="cd-d">--</span><div class="cd-label">Days</div></div>
+      <div class="cd-box"><span class="cd-num" id="cd-h">--</span><div class="cd-label">Hours</div></div>
+      <div class="cd-box"><span class="cd-num" id="cd-m">--</span><div class="cd-label">Minutes</div></div>
+      <div class="cd-box"><span class="cd-num" id="cd-s">--</span><div class="cd-label">Seconds</div></div>
+    </div>
+
+    <div class="datetext-badge" id="pub-datetext">Saturday · 14th of June · 2025</div>
+  </div>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ OUR STORY ══ -->
+<section class="story-section reveal">
+  <p class="section-label">Our Story</p>
+  <h2>Two hearts,<br><em>one beautiful journey</em></h2>
+  <div class="story-accent"></div>
+  <p id="pub-story1">What began as a chance encounter blossomed into a love story written across stolen glances, late-night conversations, and the quiet certainty that some souls are meant to find each other.</p>
+  <p id="pub-story2">After years of growing together, of adventures shared and dreams aligned, the most important question was asked — and answered with a joyful yes.</p>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ AI WEDDING PHOTOS ══ -->
+<section class="photos-section reveal">
+  <p class="section-label">Our Moments</p>
+  <h2>Captured in<br><em>love &amp; light</em></h2>
+  <p style="margin-bottom:0">A glimpse of our beautiful journey together</p>
+
+  <div class="photos-grid">
+
+    <!-- Photo 1 - Garden ceremony -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f9c6d0"/><stop offset="100%" stop-color="#fde8c8"/></linearGradient>
+            <linearGradient id="dress1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff5f8"/><stop offset="100%" stop-color="#f0d0e0"/></linearGradient>
+            <radialGradient id="glow1" cx="50%" cy="40%" r="40%"><stop offset="0%" stop-color="rgba(255,200,180,0.5)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          </defs>
+          <!-- Sky -->
+          <rect width="300" height="400" fill="url(#sky1)"/>
+          <!-- Glow -->
+          <ellipse cx="150" cy="160" rx="120" ry="100" fill="url(#glow1)"/>
+          <!-- Ground -->
+          <ellipse cx="150" cy="380" rx="200" ry="50" fill="#8bc48a" opacity=".5"/>
+          <rect x="0" y="360" width="300" height="40" fill="#6aa068" opacity=".6"/>
+          <!-- Flowers left -->
+          <g opacity=".8">
+            <circle cx="30" cy="320" r="18" fill="#e8527a" opacity=".7"/>
+            <circle cx="45" cy="300" r="14" fill="#c9922a" opacity=".7"/>
+            <circle cx="20" cy="300" r="12" fill="#7b1a2e" opacity=".6"/>
+            <rect x="32" y="318" width="3" height="45" fill="#5a8a50"/>
+          </g>
+          <!-- Arch -->
+          <path d="M80 200 Q80 100 150 100 Q220 100 220 200" fill="none" stroke="#c9922a" stroke-width="3" opacity=".7"/>
+          <!-- Roses on arch -->
+          <circle cx="80" cy="200" r="8" fill="#e8527a" opacity=".8"/>
+          <circle cx="115" cy="115" r="7" fill="#7b1a2e" opacity=".8"/>
+          <circle cx="150" cy="100" r="9" fill="#e8527a" opacity=".9"/>
+          <circle cx="185" cy="115" r="7" fill="#c9922a" opacity=".8"/>
+          <circle cx="220" cy="200" r="8" fill="#e8527a" opacity=".8"/>
+          <!-- Groom silhouette -->
+          <ellipse cx="130" cy="250" rx="18" ry="22" fill="#2a1018"/>
+          <circle cx="130" cy="218" r="14" fill="#d4a890"/>
+          <rect x="112" y="272" width="36" height="70" rx="4" fill="#1a0812"/>
+          <!-- Bride silhouette -->
+          <circle cx="170" cy="218" r="14" fill="#e8c4a8"/>
+          <path d="M148 250 Q160 240 170 245 Q180 240 192 250 Q196 290 185 360 Q170 370 155 360 Q144 290 148 250Z" fill="url(#dress1)"/>
+          <!-- Veil -->
+          <path d="M158 205 Q200 190 215 240 Q195 230 170 232" fill="white" opacity=".6"/>
+          <!-- Hair -->
+          <ellipse cx="170" cy="208" rx="14" ry="8" fill="#3a1a08" opacity=".8"/>
+          <!-- Flowers in hair -->
+          <circle cx="178" cy="205" r="5" fill="#e8527a"/>
+          <circle cx="182" cy="200" r="3" fill="#fff" opacity=".8"/>
+          <!-- Bouquet -->
+          <circle cx="157" cy="268" r="15" fill="#e8527a" opacity=".7"/>
+          <circle cx="152" cy="260" r="10" fill="#7b1a2e" opacity=".6"/>
+          <circle cx="163" cy="263" r="9" fill="#c9922a" opacity=".6"/>
+          <!-- Petals floating -->
+          <circle cx="90" cy="150" r="4" fill="#e8527a" opacity=".5"/>
+          <circle cx="210" cy="170" r="3" fill="#c9922a" opacity=".4"/>
+          <circle cx="70" cy="230" r="3" fill="#e8527a" opacity=".4"/>
+          <circle cx="240" cy="250" r="4" fill="#7b1a2e" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="photo-caption">Garden Ceremony</div>
+    </div>
+
+    <!-- Photo 2 - Romantic sunset -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff6b6b"/><stop offset="40%" stop-color="#ffa07a"/>
+              <stop offset="70%" stop-color="#ffd700"/><stop offset="100%" stop-color="#8b0000"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="50%" cy="45%" r="15%"><stop offset="0%" stop-color="#fff7a0"/><stop offset="100%" stop-color="rgba(255,200,0,0)"/></radialGradient>
+          </defs>
+          <!-- Sky -->
+          <rect width="300" height="400" fill="url(#sunset)"/>
+          <!-- Sun glow -->
+          <circle cx="150" cy="180" r="35" fill="#fff7a0" opacity=".7"/>
+          <ellipse cx="150" cy="180" rx="80" ry="60" fill="rgba(255,220,100,.2)"/>
+          <!-- Water reflection -->
+          <rect x="0" y="300" width="300" height="100" fill="#6b0000" opacity=".5"/>
+          <path d="M0 300 Q75 290 150 300 Q225 310 300 300 L300 400 L0 400Z" fill="#4a0000" opacity=".6"/>
+          <!-- Reflection shimmer -->
+          <rect x="130" y="300" width="10" height="100" fill="rgba(255,215,0,.3)"/>
+          <rect x="145" y="300" width="5" height="100" fill="rgba(255,215,0,.2)"/>
+          <!-- Silhouettes -->
+          <ellipse cx="125" cy="268" rx="16" ry="20" fill="#1a0000"/>
+          <circle cx="125" cy="240" r="13" fill="#1a0000"/>
+          <rect x="109" y="288" width="32" height="65" rx="3" fill="#0a0000"/>
+          <circle cx="165" cy="238" r="13" fill="#1a0000"/>
+          <!-- Bride dress silhouette -->
+          <path d="M145 260 Q160 252 165 258 Q175 252 185 260 Q188 295 178 360 Q165 368 152 360 Q142 295 145 260Z" fill="#1a0000"/>
+          <!-- Veil flowing in wind -->
+          <path d="M155 225 Q200 195 220 230 Q200 225 175 235" fill="#2a0000" opacity=".7"/>
+          <!-- Holding hands -->
+          <path d="M141 276 Q148 278 150 282 Q155 278 159 276" stroke="#2a0000" stroke-width="2" fill="none"/>
+          <!-- Stars -->
+          <circle cx="50" cy="40" r="1.5" fill="white" opacity=".6"/>
+          <circle cx="250" cy="30" r="1" fill="white" opacity=".5"/>
+          <circle cx="180" cy="55" r="1.5" fill="white" opacity=".7"/>
+          <circle cx="80" cy="70" r="1" fill="white" opacity=".4"/>
+          <circle cx="270" cy="80" r="2" fill="white" opacity=".5"/>
+          <!-- Birds -->
+          <path d="M60 120 Q65 115 70 120" stroke="black" stroke-width="1.5" fill="none"/>
+          <path d="M80 110 Q86 104 92 110" stroke="black" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="photo-caption">Sunset Romance</div>
+    </div>
+
+    <!-- Photo 3 - Reception dance -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="spotlight" cx="50%" cy="30%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,220,150,.6)"/>
+              <stop offset="100%" stop-color="rgba(100,20,40,.9)"/>
+            </radialGradient>
+          </defs>
+          <!-- Dark reception background -->
+          <rect width="300" height="400" fill="#1a0812"/>
+          <!-- Spotlight -->
+          <ellipse cx="150" cy="280" rx="130" ry="100" fill="rgba(255,200,100,.15)"/>
+          <ellipse cx="150" cy="280" rx="80" ry="60" fill="rgba(255,200,100,.1)"/>
+          <!-- Bokeh lights -->
+          <circle cx="20" cy="50" r="20" fill="#e8527a" opacity=".2"/>
+          <circle cx="60" cy="80" r="12" fill="#c9922a" opacity=".25"/>
+          <circle cx="250" cy="60" r="18" fill="#7b1a2e" opacity=".3"/>
+          <circle cx="270" cy="120" r="10" fill="#e8527a" opacity=".2"/>
+          <circle cx="30" cy="160" r="15" fill="#c9922a" opacity=".2"/>
+          <circle cx="280" cy="200" r="20" fill="#7b1a2e" opacity=".2"/>
+          <circle cx="100" cy="30" r="8" fill="#e8527a" opacity=".3"/>
+          <circle cx="190" cy="50" r="14" fill="#c9922a" opacity=".2"/>
+          <!-- Small bokeh -->
+          <circle cx="40" cy="250" r="6" fill="#e8527a" opacity=".35"/>
+          <circle cx="260" cy="300" r="8" fill="#c9922a" opacity=".3"/>
+          <circle cx="80" cy="330" r="5" fill="#7b1a2e" opacity=".4"/>
+          <!-- Dance floor glimmer -->
+          <ellipse cx="150" cy="380" rx="140" ry="20" fill="rgba(201,146,42,.1)"/>
+          <!-- Couple dancing -->
+          <!-- Groom -->
+          <circle cx="128" cy="225" r="15" fill="#d4a890"/>
+          <ellipse cx="128" cy="255" rx="20" ry="25" fill="#1a0020"/>
+          <rect x="108" y="278" width="40" height="80" rx="4" fill="#120015"/>
+          <!-- Bride -->
+          <circle cx="168" cy="223" r="15" fill="#e8c4a8"/>
+          <!-- Flowing dress -->
+          <path d="M148 248 Q160 238 168 243 Q178 238 188 248 Q200 285 195 370 Q175 380 155 370 Q140 285 148 248Z" fill="#fff5f8" opacity=".9"/>
+          <!-- Groom's arm -->
+          <path d="M148 248 Q158 242 163 235" stroke="#1a0020" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <!-- Bride's arm on groom's shoulder -->
+          <path d="M148 238 Q138 232 128 230" stroke="#e8c4a8" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Hair -->
+          <ellipse cx="168" cy="213" rx="15" ry="9" fill="#3a1a08"/>
+          <!-- Tiara -->
+          <path d="M158 210 L161 204 L165 207 L168 202 L171 207 L175 204 L178 210" stroke="#c9922a" stroke-width="1.5" fill="none"/>
+          <!-- Confetti -->
+          <rect x="60" y="150" width="5" height="8" rx="1" fill="#e8527a" opacity=".7" transform="rotate(30 62 154)"/>
+          <rect x="230" y="130" width="4" height="7" rx="1" fill="#c9922a" opacity=".7" transform="rotate(-20 232 133)"/>
+          <rect x="100" y="180" width="4" height="6" rx="1" fill="#7b1a2e" opacity=".6" transform="rotate(45 102 183)"/>
+          <rect x="200" y="160" width="5" height="8" rx="1" fill="#e8527a" opacity=".6" transform="rotate(-35 202 164)"/>
+          <!-- Musical notes -->
+          <text x="35" y="190" fill="#c9922a" opacity=".4" font-size="18">♪</text>
+          <text x="248" y="175" fill="#e8527a" opacity=".4" font-size="14">♫</text>
+        </svg>
+      </div>
+      <div class="photo-caption">First Dance</div>
+    </div>
+
+    <!-- Photo 4 - Ring exchange -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f9e8ee"/><stop offset="100%" stop-color="#e8f0f9"/>
+            </linearGradient>
+            <radialGradient id="ring-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,215,0,.6)"/><stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <!-- Background -->
+          <rect width="300" height="400" fill="url(#bg4)"/>
+          <!-- Soft floral bg -->
+          <circle cx="30" cy="30" r="40" fill="#e8527a" opacity=".08"/>
+          <circle cx="270" cy="380" r="50" fill="#7b1a2e" opacity=".08"/>
+          <circle cx="280" cy="80" r="30" fill="#c9922a" opacity=".1"/>
+          <!-- Flower petals scattered -->
+          <g opacity=".4">
+            <ellipse cx="40" cy="80" rx="8" ry="5" fill="#e8527a" transform="rotate(30 40 80)"/>
+            <ellipse cx="260" cy="120" rx="7" ry="4" fill="#c9922a" transform="rotate(-45 260 120)"/>
+            <ellipse cx="80" cy="340" rx="9" ry="5" fill="#7b1a2e" transform="rotate(60 80 340)"/>
+            <ellipse cx="220" cy="300" rx="8" ry="5" fill="#e8527a" transform="rotate(-20 220 300)"/>
+            <ellipse cx="150" cy="50" rx="6" ry="4" fill="#c9922a" transform="rotate(15 150 50)"/>
+          </g>
+          <!-- Hands close-up - his hand -->
+          <path d="M60 220 Q80 200 120 195 Q155 192 180 200 Q200 210 220 215 L230 240 Q210 250 185 245 Q160 240 130 245 Q100 250 75 245Z" fill="#d4a890"/>
+          <!-- Her hand on top -->
+          <path d="M70 195 Q90 175 130 172 Q165 170 185 178 Q200 185 215 188 L222 208 Q202 216 178 213 Q152 210 122 215 Q90 220 72 215Z" fill="#f0c8a8"/>
+          <!-- Ring on finger - golden -->
+          <g transform="translate(145 175)">
+            <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#c9922a" stroke-width="4"/>
+            <ellipse cx="0" cy="-2" rx="18" ry="8" fill="none" stroke="#e8d080" stroke-width="2"/>
+            <!-- Diamond -->
+            <polygon points="0,-10 6,-4 0,2 -6,-4" fill="#d0f0ff" opacity=".9"/>
+            <polygon points="0,-10 6,-4 0,-7" fill="white" opacity=".6"/>
+            <!-- Ring glow -->
+            <ellipse cx="0" cy="-4" rx="25" ry="16" fill="url(#ring-glow)"/>
+          </g>
+          <!-- Second ring -->
+          <g transform="translate(115 190)">
+            <ellipse cx="0" cy="0" rx="16" ry="7" fill="none" stroke="#c9922a" stroke-width="3.5"/>
+            <ellipse cx="0" cy="-1" rx="16" ry="7" fill="none" stroke="#e8d080" stroke-width="1.5"/>
+          </g>
+          <!-- Sparkles -->
+          <text x="170" y="148" fill="#c9922a" opacity=".8" font-size="16">✦</text>
+          <text x="195" y="160" fill="#e8527a" opacity=".6" font-size="12">✦</text>
+          <text x="110" y="155" fill="#c9922a" opacity=".5" font-size="10">✦</text>
+          <!-- Rose petals around hands -->
+          <ellipse cx="50" cy="230" rx="10" ry="6" fill="#e8527a" opacity=".5" transform="rotate(-20 50 230)"/>
+          <ellipse cx="240" cy="195" rx="9" ry="5" fill="#7b1a2e" opacity=".4" transform="rotate(40 240 195)"/>
+          <!-- Text -->
+          <text x="150" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7b1a2e" opacity=".8" font-style="italic">With this ring...</text>
+          <text x="150" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#c9922a" opacity=".7">I thee wed</text>
+        </svg>
+      </div>
+      <div class="photo-caption">Ring Exchange</div>
+    </div>
+
+    <!-- Photo 5 - Floral bouquet -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="bg5" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#fff0f5"/><stop offset="100%" stop-color="#f0e8d0"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg5)"/>
+          <!-- Ribbon stem -->
+          <path d="M150 380 L140 320 L148 260 L155 260 L160 320 L148 380" fill="none" stroke="#c9922a" stroke-width="4" stroke-linecap="round"/>
+          <path d="M140 320 Q120 310 110 290 Q130 295 148 280" fill="none" stroke="#c9922a" stroke-width="2" opacity=".6"/>
+          <path d="M160 320 Q180 310 190 290 Q170 295 152 280" fill="none" stroke="#c9922a" stroke-width="2" opacity=".6"/>
+          <!-- Large center rose -->
+          <circle cx="150" cy="200" r="45" fill="#7b1a2e"/>
+          <circle cx="150" cy="200" r="38" fill="#b5304e"/>
+          <circle cx="150" cy="200" r="30" fill="#e8527a"/>
+          <circle cx="150" cy="200" r="22" fill="#c93050"/>
+          <circle cx="150" cy="200" r="14" fill="#7b1a2e"/>
+          <!-- Rose petals -->
+          <ellipse cx="150" cy="160" rx="20" ry="30" fill="#e8527a" opacity=".7" transform="rotate(0 150 160)"/>
+          <ellipse cx="185" cy="175" rx="20" ry="30" fill="#c93050" opacity=".7" transform="rotate(60 185 175)"/>
+          <ellipse cx="185" cy="225" rx="20" ry="30" fill="#e8527a" opacity=".7" transform="rotate(120 185 225)"/>
+          <ellipse cx="150" cy="240" rx="20" ry="30" fill="#c93050" opacity=".7" transform="rotate(180 150 240)"/>
+          <ellipse cx="115" cy="225" rx="20" ry="30" fill="#e8527a" opacity=".7" transform="rotate(240 115 225)"/>
+          <ellipse cx="115" cy="175" rx="20" ry="30" fill="#c93050" opacity=".7" transform="rotate(300 115 175)"/>
+          <!-- Side flowers -->
+          <circle cx="90" cy="175" r="25" fill="#c9922a" opacity=".8"/>
+          <circle cx="90" cy="175" r="18" fill="#e8c060" opacity=".8"/>
+          <circle cx="90" cy="175" r="10" fill="#c9922a"/>
+          <circle cx="210" cy="175" r="25" fill="#7b1a2e" opacity=".8"/>
+          <circle cx="210" cy="175" r="18" fill="#b5304e" opacity=".8"/>
+          <circle cx="210" cy="175" r="10" fill="#7b1a2e"/>
+          <!-- Leaves -->
+          <ellipse cx="70" cy="230" rx="20" ry="10" fill="#4a8a48" opacity=".8" transform="rotate(-30 70 230)"/>
+          <ellipse cx="230" cy="230" rx="20" ry="10" fill="#5a9a58" opacity=".8" transform="rotate(30 230 230)"/>
+          <ellipse cx="100" cy="260" rx="15" ry="8" fill="#4a8a48" opacity=".7" transform="rotate(-45 100 260)"/>
+          <ellipse cx="200" cy="260" rx="15" ry="8" fill="#5a9a58" opacity=".7" transform="rotate(45 200 260)"/>
+          <!-- Baby's breath -->
+          <circle cx="60" cy="150" r="5" fill="white" opacity=".8"/>
+          <circle cx="75" cy="140" r="4" fill="white" opacity=".7"/>
+          <circle cx="240" cy="145" r="5" fill="white" opacity=".8"/>
+          <circle cx="225" cy="135" r="4" fill="white" opacity=".7"/>
+          <circle cx="130" cy="130" r="3" fill="white" opacity=".6"/>
+          <circle cx="170" cy="128" r="4" fill="white" opacity=".7"/>
+          <!-- Gold ribbon bow -->
+          <path d="M130 270 Q140 255 150 265 Q160 255 170 270 Q160 275 150 265 Q140 275 130 270Z" fill="#c9922a"/>
+          <circle cx="150" cy="265" r="7" fill="#e8d080"/>
+        </svg>
+      </div>
+      <div class="photo-caption">Bridal Bouquet</div>
+    </div>
+
+    <!-- Photo 6 - Candlelit dinner -->
+    <div class="photo-frame">
+      <div class="photo-svg-wrap">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="candle-glow" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,200,80,.5)"/><stop offset="100%" stop-color="rgba(40,0,15,.95)"/>
+            </radialGradient>
+            <radialGradient id="candle2" cx="25%" cy="50%" r="40%">
+              <stop offset="0%" stop-color="rgba(255,180,60,.3)"/><stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="candle3" cx="75%" cy="50%" r="40%">
+              <stop offset="0%" stop-color="rgba(255,180,60,.3)"/><stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <!-- Dark background -->
+          <rect width="300" height="400" fill="#1a0008"/>
+          <!-- Candle glow overlays -->
+          <ellipse cx="150" cy="180" rx="150" ry="130" fill="url(#candle-glow)"/>
+          <ellipse cx="75" cy="220" rx="100" ry="80" fill="url(#candle2)"/>
+          <ellipse cx="225" cy="220" rx="100" ry="80" fill="url(#candle3)"/>
+          <!-- Table -->
+          <rect x="20" y="300" width="260" height="100" rx="2" fill="#2a0818"/>
+          <rect x="20" y="295" width="260" height="12" rx="2" fill="#3a1025"/>
+          <!-- Tablecloth -->
+          <rect x="20" y="290" width="260" height="15" rx="3" fill="#7b1a2e" opacity=".6"/>
+          <!-- Plate left -->
+          <ellipse cx="85" cy="310" rx="38" ry="28" fill="#fff8f0" opacity=".9"/>
+          <ellipse cx="85" cy="310" rx="30" ry="22" fill="#f5e8d0" opacity=".8"/>
+          <!-- Plate right -->
+          <ellipse cx="215" cy="310" rx="38" ry="28" fill="#fff8f0" opacity=".9"/>
+          <ellipse cx="215" cy="310" rx="30" ry="22" fill="#f5e8d0" opacity=".8"/>
+          <!-- Wine glasses -->
+          <path d="M138 270 L148 295 L145 310 L155 310 L152 295 L162 270 Q158 260 150 258 Q142 260 138 270Z" fill="rgba(200,50,70,.6)" stroke="rgba(255,255,255,.3)" stroke-width=".5"/>
+          <ellipse cx="150" cy="260" rx="14" ry="5" fill="rgba(200,50,70,.4)" stroke="rgba(255,255,255,.2)" stroke-width=".5"/>
+          <!-- Candles -->
+          <!-- Left candle -->
+          <rect x="68" y="240" width="8" height="50" rx="2" fill="#f5e0c0"/>
+          <ellipse cx="72" cy="240" rx="4" ry="3" fill="#f0d080"/>
+          <path d="M72 235 Q75 228 72 222 Q69 228 72 235" fill="#ffa030"/>
+          <ellipse cx="72" cy="222" rx="3" ry="5" fill="#fff080" opacity=".8"/>
+          <!-- Right candle -->
+          <rect x="224" y="245" width="7" height="45" rx="2" fill="#f5e0c0"/>
+          <ellipse cx="227.5" cy="245" rx="3.5" ry="2.5" fill="#f0d080"/>
+          <path d="M227.5 240 Q230 233 227.5 228 Q225 233 227.5 240" fill="#ffa030"/>
+          <ellipse cx="227.5" cy="228" rx="2.5" ry="4" fill="#fff080" opacity=".8"/>
+          <!-- Center candle tall -->
+          <rect x="145" y="210" width="10" height="80" rx="2" fill="#fff5e0"/>
+          <ellipse cx="150" cy="210" rx="5" ry="3.5" fill="#f0d080"/>
+          <path d="M150 205 Q153 196 150 188 Q147 196 150 205" fill="#ff8020"/>
+          <ellipse cx="150" cy="188" rx="4" ry="6" fill="#fff080" opacity=".9"/>
+          <!-- Flower center -->
+          <circle cx="150" cy="275" r="12" fill="#e8527a" opacity=".7"/>
+          <circle cx="150" cy="275" r="8" fill="#7b1a2e"/>
+          <!-- Stars/bokeh -->
+          <circle cx="50" cy="50" r="2" fill="white" opacity=".3"/>
+          <circle cx="260" cy="40" r="1.5" fill="white" opacity=".25"/>
+          <circle cx="30" cy="150" r="1.5" fill="#c9922a" opacity=".4"/>
+          <circle cx="280" cy="160" r="2" fill="#c9922a" opacity=".3"/>
+          <!-- Silhouettes of couple -->
+          <ellipse cx="85" cy="220" rx="22" ry="28" fill="rgba(20,0,8,.8)"/>
+          <circle cx="85" cy="188" r="18" fill="rgba(20,0,8,.8)"/>
+          <ellipse cx="215" cy="222" rx="22" ry="26" fill="rgba(20,0,8,.8)"/>
+          <circle cx="215" cy="190" r="17" fill="rgba(20,0,8,.8)"/>
+        </svg>
+      </div>
+      <div class="photo-caption">Candlelit Reception</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ CELEBRATION DETAILS ══ -->
+<section class="reveal">
+  <p class="section-label">The Celebration</p>
+  <h2>Join us for<br><em>this precious day</em></h2>
+  <div class="details-grid">
+    <div class="detail-card reveal">
+      <span class="icon">🌹</span>
+      <strong>Date</strong>
+      <div class="value" id="pub-date">Saturday<br>14 June 2025</div>
+    </div>
+    <div class="detail-card reveal">
+      <span class="icon">⏱</span>
+      <strong>Time</strong>
+      <div class="value" id="pub-time">6:00 PM</div>
+      <div class="sub" id="pub-doors">Doors open at 5:30 PM</div>
+    </div>
+    <div class="detail-card reveal map-card" onclick="openInGoogleMaps()">
+      <span class="icon">📍</span>
+      <strong>Venue</strong>
+      <div class="value" id="pub-venue">Grand Ballroom<br>Hotel Ceylon</div>
+      <div class="sub" id="pub-address">123 Lotus Road, Colombo 3</div>
+      <a class="map-btn" onclick="openInGoogleMaps(); return false;">
+        🗺 View in Google Maps
+      </a>
+    </div>
+    <div class="detail-card reveal">
+      <span class="icon">👗</span>
+      <strong>Dress Code</strong>
+      <div class="value" id="pub-dresscode">Formal Attire</div>
+      <div class="sub" id="pub-dresscodesub">Wine red &amp; ivory tones welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP PREVIEW ══ -->
+<section class="reveal" style="padding-top:1rem;padding-bottom:3rem;">
+  <div style="max-width:760px;margin:0 auto;border-radius:6px;overflow:hidden;border:2px solid rgba(123,26,46,.2);box-shadow:0 8px 30px rgba(123,26,46,.1);">
+    <div style="background:linear-gradient(135deg,var(--wine),var(--wine-dark));padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;">
+      <div style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;">📍 Venue Location</div>
+      <button onclick="openInGoogleMaps()" style="background:var(--gold);color:white;border:none;padding:.5rem 1.2rem;border-radius:3px;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='#8a6010'" onmouseout="this.style.background='var(--gold)'">Open in Google Maps ↗</button>
+    </div>
+    <iframe
+      id="map-frame"
+      width="100%" height="300"
+      style="border:0;display:block;"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8!2d79.8612!3d6.9271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591614000001%3A0x0!2sHotel+Ceylon+Colombo!5e0!3m2!1sen!2slk!4v1700000000000">
+    </iframe>
+    <div style="background:var(--white);padding:.8rem 1.5rem;font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.15em;color:var(--text-muted);text-align:center;">
+      Grand Ballroom, Hotel Ceylon · 123 Lotus Road, Colombo 3
+    </div>
+  </div>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ SCHEDULE ══ -->
+<section class="reveal">
+  <p class="section-label">Order of the Day</p>
+  <h2>The evening's<br><em>programme</em></h2>
+  <div class="timeline" id="pub-timeline"></div>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ RSVP ══ -->
+<section class="rsvp-section reveal">
+  <p class="section-label">Kindly Reply</p>
+  <h2>Will you join<br><em>our celebration?</em></h2>
+  <p>We kindly ask that you respond by <strong id="pub-rsvpdeadline" style="color:var(--wine)">1st May 2025</strong>. Your presence would mean the world to us.</p>
+  <div class="rsvp-wrapper">
+    <form class="rsvp-form" id="rsvpForm" onsubmit="submitRSVP(event)">
+      <div><label>Your Full Name</label><input type="text" id="rsvp-name" placeholder="e.g. Nimal Perera" required/></div>
+      <div><label>Email Address</label><input type="email" id="rsvp-email" placeholder="your@email.com" required/></div>
+      <div><label>Will you attend?</label>
+        <select id="rsvp-attending">
+          <option value="yes">🌹 Joyfully accepts</option>
+          <option value="no">Regretfully declines</option>
+        </select>
+      </div>
+      <div><label>Number of Guests</label><input type="number" id="rsvp-guests" min="1" max="6" value="1"/></div>
+      <div><label>Dietary Requirements (optional)</label><textarea id="rsvp-dietary" placeholder="Vegetarian, vegan, allergies..."></textarea></div>
+      <button type="submit" class="btn-wine">Send My Reply ✦</button>
+    </form>
+    <div id="rsvp-thanks" style="display:none;text-align:center;padding:2rem 0;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🌹</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--wine);font-style:italic;margin-bottom:.5rem;">Thank you!</div>
+      <p>We've received your RSVP and can't wait to celebrate with you.</p>
+    </div>
+  </div>
+</section>
+
+<div class="hr-fancy"></div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div style="font-size:2.5rem;margin-bottom:1rem;position:relative;">💕</div>
+  <p>For enquiries, please contact</p>
+  <p class="contact" id="pub-contact">+94 77 123 4567 · wedding@example.lk</p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:.8rem;margin:1.5rem 0;position:relative;">
+    <div style="height:1px;width:60px;background:linear-gradient(to right,transparent,var(--gold-light))"></div>
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="#c9922a" opacity=".7"><path d="M10 2L12.2 7.2H18.8L13.5 11L15.7 17.2L10 13.4L4.3 17.2L6.5 11L1.2 7.2H7.8Z"/></svg>
+    <div style="height:1px;width:60px;background:linear-gradient(to left,transparent,var(--gold-light))"></div>
+  </div>
+  <span class="big"><span id="pub-footer-name1">Vishwa</span> &amp; <span id="pub-footer-name2">Geethma</span></span>
+  <em id="pub-footer-date" style="color:rgba(255,255,255,.5);position:relative;display:block;margin-bottom:2rem;">14 · 06 · 2025</em>
+  <div style="position:relative; margin-top:2rem;">
+    <a href="#login" style="display:inline-block; border:1px solid rgba(255,255,255,0.2); padding:0.4rem 1rem; border-radius:3px; opacity:0.6; font-size:0.65rem; color:white; text-decoration:none; font-family:'Cinzel', serif; letter-spacing:0.15em; text-transform:uppercase; transition:all 0.2s;" onmouseover="this.style.opacity='1'; this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.opacity='0.6'; this.style.background='transparent'">Admin Login</a>
+  </div>
+</footer>
+
+
+</div>
+<div id="view-login">
+
+
+<div id="login-screen">
+  <div class="login-box">
+    <h1>Admin Panel</h1>
+    <p class="sub">Wedding Invitation Editor</p>
+    <input type="password" id="pwd-input" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="btn" onclick="doLogin()">Enter</button>
+    <div class="login-error" id="login-err"></div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:1.5rem;opacity:.7">Default password: <strong>wedding2025</strong></p>
+    <p style="font-size:.72rem;margin-top:0.5rem;"><a href="#" style="color:var(--gold);text-decoration:none;">&larr; Back to Invitation</a></p>
+  </div>
+</div>
+
+
+
+</div>
+<div id="view-admin">
+
+
+<!-- Login moved to #login -->
+
+<!-- ═══ ADMIN ═══ -->
+<div id="admin-screen">
+  <div class="admin-header">
+    <h1>✦ Invitation Editor</h1>
+    <div class="hbtns">
+      <button class="hbtn hbtn-preview" onclick="openPreview()">Preview Page</button>
+      <button class="hbtn hbtn-save" onclick="saveAll()">Save Changes</button>
+      <button class="hbtn" style="color:#fff;border-color:#2e7d32;background:#2e7d32;" onclick="generateShareLink()">Copy Share Link</button>
+      <button class="hbtn hbtn-logout" onclick="doLogout()">Log out</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- COUPLE -->
+    <div class="card">
+      <div class="card-title">Couple & Headline</div>
+      <div class="row2">
+        <div class="field"><label>Person 1 Name</label><input id="f-name1" type="text" placeholder="e.g. Kaveen"/></div>
+        <div class="field"><label>Person 2 Name</label><input id="f-name2" type="text" placeholder="e.g. Samithri"/></div>
+      </div>
+      <div class="field"><label>Announcement line (above names)</label><input id="f-announce" type="text" placeholder="Together with their families"/></div>
+      <div class="field"><label>Tagline (below names)</label><textarea id="f-tagline" rows="2" placeholder="Request the honour of your presence..."></textarea><div class="hint">Use a new line (Enter) to break into two lines</div></div>
+    </div>
+
+    <!-- DATE & TIME -->
+    <div class="card">
+      <div class="card-title">Date, Time & Countdown</div>
+      <div class="row2">
+        <div class="field"><label>Wedding Date &amp; Time (for countdown)</label><input id="f-weddingDateISO" type="datetime-local"/><div class="hint">This drives the live countdown timer</div></div>
+        <div class="field"><label>Date display text (hero)</label><input id="f-datetext" type="text" placeholder="Saturday · 14th of June · 2025"/></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Date card text</label><textarea id="f-date" rows="2" placeholder="Saturday&#10;14 June 2025"></textarea><div class="hint">Use Enter for a new line</div></div>
+        <div class="field"><label>Time card text</label><input id="f-time" type="text" placeholder="6:00 PM"/></div>
+      </div>
+      <div class="field"><label>Doors open sub-text</label><input id="f-doors" type="text" placeholder="Doors open at 5:30 PM"/></div>
+    </div>
+
+    <!-- VENUE -->
+    <div class="card">
+      <div class="card-title">Venue & Dress Code</div>
+      <div class="row2">
+        <div class="field"><label>Venue name</label><textarea id="f-venue" rows="2" placeholder="Grand Ballroom&#10;Hotel Ceylon"></textarea><div class="hint">Use Enter for a new line</div></div>
+        <div class="field"><label>Address</label><input id="f-address" type="text" placeholder="123 Lotus Road, Colombo 3"/></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Dress code</label><input id="f-dresscode" type="text" placeholder="Formal Attire"/></div>
+        <div class="field"><label>Dress code sub-text</label><input id="f-dresscodesub" type="text" placeholder="Gold & ivory tones welcome"/></div>
+      </div>
+    </div>
+
+    <!-- STORY -->
+    <div class="card">
+      <div class="card-title">Our Story</div>
+      <div class="field"><label>First paragraph</label><textarea id="f-story1" rows="3"></textarea></div>
+      <div class="field"><label>Second paragraph</label><textarea id="f-story2" rows="3"></textarea></div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="card">
+      <div class="card-title">Schedule / Order of the Day</div>
+      <div id="sched-list"></div>
+      <button class="btn-add" onclick="addScheduleItem()">+ Add Time Slot</button>
+    </div>
+
+    <!-- RSVP & CONTACT -->
+    <div class="card">
+      <div class="card-title">RSVP & Contact</div>
+      <div class="row2">
+        <div class="field"><label>RSVP deadline text</label><input id="f-rsvpdeadline" type="text" placeholder="1st May 2025"/></div>
+        <div class="field"><label>Contact line (footer)</label><input id="f-contact" type="text" placeholder="+94 77 123 4567 · email@example.com"/></div>
+      </div>
+      <div class="field"><label>Footer date display</label><input id="f-footerdate" type="text" placeholder="14 · 06 · 2025"/></div>
+    </div>
+
+    <!-- CHANGE PASSWORD -->
+    <div class="card">
+      <div class="card-title">Change Admin Password</div>
+      <div class="pwd-row">
+        <div class="field" style="margin:0"><label>New Password</label><input id="pwd-new" type="password" placeholder="New password"/></div>
+        <div class="field" style="margin:0"><label>Confirm Password</label><input id="pwd-confirm" type="password" placeholder="Confirm new password"/></div>
+        <button class="btn-sm" onclick="changePassword()">Update</button>
+      </div>
+      <div class="pwd-msg" id="pwd-msg"></div>
+    </div>
+
+  </div><!-- /admin-body -->
+</div><!-- /admin-screen -->
+
+<div class="save-toast" id="save-toast">Changes saved ✓</div>
+
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
